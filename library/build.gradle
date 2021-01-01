@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.24'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.24'
+    implementation group: 'org.aspectj', name: 'aspectjrt', version: '1.8.13'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
